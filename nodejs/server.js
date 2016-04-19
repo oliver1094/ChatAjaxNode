@@ -11,12 +11,25 @@ io.on('connection', function (socket) {
 
     var redisClient = redis.createClient();
 
+
     redisClient.subscribe('notification');
+    
+
+
 
     redisClient.on("message", function(channel, message) {
+
         console.log("New message: " + message + ". In channel: " + channel);
+
         socket.emit(channel, message);
+
+
     });
+
+
+
+    // var string = JSON.parse(message);
+
 
     socket.on('disconnect', function() {
         redisClient.quit();

@@ -55,10 +55,18 @@ class SiteController extends Controller
         $name = Yii::$app->request->post('name');
         $message = Yii::$app->request->post('message');
 
+        Yii::$app->redis->executeCommand('HSET',[
+        'key' => 'prueba',
+            'field' => 'name',
+            'value' => 'hola'
+        ]);
+        
         return Yii::$app->redis->executeCommand('PUBLISH', [
             'channel' => 'notification',
             'message' => Json::encode(['name' => $name, 'message' => $message])
         ]);
+
+
 
     }
 

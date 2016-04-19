@@ -13,6 +13,11 @@ $config = [
             'port' => 6379,
             'database' => 0,
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'enableStrictParsing' => false,
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'sfA0pBPW_1UdqBh-Et8BFvJ0wU47nFCr',
